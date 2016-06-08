@@ -14,24 +14,29 @@
  *= require dataTables/jquery.dataTables
  *= require_self
  */
- .Bandeaux{
-     background-color: #bdf00f;
- }
- .domain{
-     background-color: white
-     border: 1px solid black;
- }
- .Carte{
-     background-color: #f2f2f2;
-     box-shadow: 10px 12px 11px -4px rgba(0,0,0,0.12);
- }
- a{
+.bandeaux{
+  background-color: #bdf00f;
+}
+
+.domain{
+  background-color: white
+  border: 1px solid black;
+}
+
+.carte{
+  background-color: #f2f2f2;
+  box-shadow: 10px 12px 11px -4px rgba(0,0,0,0.12);
+}
+
+a{
   color: #59c0e3
- }
- button:hover{
+}
+
+button:hover{
   background-color: #bdf00f;
   color: white;
- }
+}
+
 .etat{
   border: 2px black solid;
   border-radius: 200px;
@@ -39,23 +44,25 @@
   height: 25px;
   width: 25px;
 }
+
 .up{
- background-color: #7cc837;
+  background-color: #7cc837;
 }
 
 .down{
- background-color: #c83737;
+  background-color: #c83737;
 }
+
 .update{
- background-color: #f0e84d;
+  background-color: #f0e84d;
 } 
 
-.listeColumn{
- border: 2px solid black;
- width: 15%;
- height:200px;
- display: inline-block;
- overflow: hidden;
- margin-top: 0;
- list-style: none;
+.liste-column{
+  border: 2px solid black;
+  width: 15%;
+  height:200px;
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 0;
+  list-style: none;
 }

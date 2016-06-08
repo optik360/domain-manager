@@ -1,62 +1,65 @@
 <h2 class="btn btn-lg"><%= link_to "ajouter un domaine", new_domain_path %></h2>
 <h2 class="btn btn-lg"><%= link_to "Liste des clients", clients_path %></h2>
-<button class="btn btn-lg"></button>
+
+<button class="btn btn-lg" onclick="showList()" ></button>
+
 <div id="list">
-    <ul class="listeColumn" id="visible">
-        <li><h4>Visible</h4></li>
-        <li><a class="column" data-column ="0">nom</a></li>
-        <li><a class="column" data-column ="1">Client</a></li>
-        <li><a class="column" data-column ="2">Serveur</a></li>
-        <li><a class="column" data-column ="3">Nom Serveur</a></li>
-        <li><a class="column" data-column ="4">Dernière Facture</a></li>
-        <li><a class="column" data-column ="5">Temps d'ici l'expiration</a></li>
-        <li><a class="column" data-column ="6">État indiquer</a></li>
-        <li><a class="column" data-column ="7">État requête</a></li>
-    </ul>
-    <ul class="listeColumn" id="hidden">
-        <li><h4>Caché</h4></li>
-    </ul>
+  <ul class="liste-column" id="visible">
+    <li><h4>Visible</h4></li>
+    <li><a class="column" data-column ="0">nom</a></li>
+    <li><a class="column" data-column ="1">Client</a></li>
+    <li><a class="column" data-column ="2">Serveur</a></li>
+    <li><a class="column" data-column ="3">Nom Serveur</a></li>
+    <li><a class="column" data-column ="4">Dernière Facture</a></li>
+    <li><a class="column" data-column ="5">Temps d'ici l'expiration</a></li>
+    <li><a class="column" data-column ="6">État indiquer</a></li>
+    <li><a class="column" data-column ="7">État requête</a></li>
+  </ul>
+  <ul class="liste-column" id="hidden">
+    <li><h4>Caché</h4></li>
+  </ul>
 </div>
+
 <table id="table" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Client</th>
-                <th>serveur</th>
-                <th>Nom serveur</th>
-                <th>Dernière Facture</th>
-                <th>temps d'ici l'expiration</th>
-                <th>état indiquer</th>
-                <th class="no-sort">état requete</th>
-                <th class="no-sort">info</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Nom</th>
-                <th>Client</th>
-                <th>serveur</th>
-                <th>Nom serveur</th>
-                <th>Dernière Facture</th>
-                <th>temps d'ici l'expiration</th>
-                <th>état indiquer</th>
-                <th>état requete</th>
-                <th>info</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            <% domains.each do |d| %>
-            <tr>
-                <td><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></td>
-                <td><%= link_to d.client.name, client_path(d.client) %></dt>
-                <td><%=  d.server %></dt>
-                <td><%=  d.server_name %></dt>
-                <td><%=  d.last_invoice_date%></td>
-                <td><%= Time.diff(Time.now,Time.parse(d.due_date.to_s),'%y, %M, %w, %d')[:diff] %></td>
-                <td><%=  d.last_known_state_1%></td>
-                <td><p class="etat <%=httpStatus(d) %>"></p></td>
-                <td> <%= link_to "plus de détails", domain_path(d.id)%></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Client</th>
+      <th>serveur</th>
+      <th>Nom serveur</th>
+      <th>Dernière Facture</th>
+      <th>temps d'ici l'expiration</th>
+      <th>état indiquer</th>
+      <th class="no-sort">état requete</th>
+      <th class="no-sort">info</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Nom</th>
+      <th>Client</th>
+      <th>serveur</th>
+      <th>Nom serveur</th>
+      <th>Dernière Facture</th>
+      <th>temps d'ici l'expiration</th>
+      <th>état indiquer</th>
+      <th>état requete</th>
+      <th>info</th>
+    </tr>
+  </tfoot>
+  <tbody>
+      <% domains.each do |d| %>
+        <tr>
+          <td><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></td>
+          <td><%= link_to d.client.name, client_path(d.client) %></dt>
+          <td><%=  d.server %></dt>
+          <td><%=  d.server_name %></dt>
+          <td><%=  d.last_invoice_date%></td>
+          <td><%= Time.diff(Time.now,Time.parse(d.due_date.to_s),'%y, %M, %w, %d')[:diff] %></td>
+          <td><%=  d.last_known_state_1%></td>
+          <td><p class="etat <%=httpStatus(d) %>"></p></td>
+          <td> <%= link_to "plus de détails", domain_path(d.id)%></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

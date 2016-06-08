@@ -1,18 +1,18 @@
 <div class="container row">
-      <div class="card col-xs-12 Carte">
-        <h1><%= link_to domain.name,"http://#{domain.name}", :target => "_blank" %></h1>
-        <h2>Client: <%= link_to domain.client.name, client_path(domain.client_id) %></h2> 
-        <h3>Nom du Serveur: <%= domain.server_name %></h3>
-        <h3>Serveur: <%= domain.server %></h3>
-        <p>CMS: <%= domain.cms%></p>
-        <p>Etat 1: <%= domain.last_known_state_1%></p>
-        <div>Etat 2: <p class="etat <%=httpStatus(domain) %>"></p> </div>
-        <p>Date de création: <%=  domain.created_date%></p>
-        <p>Date d'échéance: <%=  domain.due_date%></p>
-        <p>Temps d'ici la date d'échéance: <%= Time.diff(Time.now,Time.parse(domain.due_date.to_s),'%y, %M, %w, %d')[:diff] %></p>
-        <p>Mail: <%= domain.mail%></p>
-        <p> Commenaire: <%= domain.comment%></p>
-        <h3> <%= link_to "Éditer", edit_domain_path(domain.id)%></h3>
-        <h3> <%= link_to "Supprimer",domain_path(domain.id),method: :delete,:data => {:confirm => "Voulez vous vraiment supprimer le domaine #{domain.name}"}%></h3>
-      </div>
+  <div class="card col-xs-12 carte">
+    <h1><%= link_to domain.name,"http://#{domain.name}", :target => "_blank" %></h1>
+    <h2>Client: <%= link_to domain.client.name, client_path(domain.client_id) %></h2> 
+    <h3>Nom du Serveur: <%= domain.server_name %></h3>
+    <h3>Serveur: <%= domain.server %></h3>
+    <p>CMS: <%= domain.cms%></p>
+    <p>Etat 1: <%= domain.last_known_state_1%></p>
+    <div>Etat 2: <p class="etat <%=httpStatus(domain) %>"></p> </div>
+    <p>Date de création: <%=  domain.created_date%></p>
+    <p>Date d'échéance: <%=  domain.due_date%></p>
+    <p>Temps d'ici la date d'échéance: <%= Time.diff(Time.now,Time.parse(domain.due_date.to_s),'%y, %M, %w, %d')[:diff] %></p>
+    <p>Mail: <%= domain.mail%></p>
+    <p> Commenaire: <%= domain.comment%></p>
+    <h3> <%= link_to "Éditer", edit_domain_path(domain.id)%></h3>
+    <h3> <%= link_to "Supprimer",domain_path(domain.id),method: :delete,:data => {:confirm => "Voulez vous vraiment supprimer le domaine #{domain.name}"}%></h3>
+  </div>
 </div>

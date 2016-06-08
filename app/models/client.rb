@@ -1,3 +1,3 @@
 class Client < ActiveRecord::Base
-    has_many :domains
+  has_many :domains
 end

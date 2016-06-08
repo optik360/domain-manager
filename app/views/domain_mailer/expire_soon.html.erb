@@ -1,6 +1,5 @@
 <h1>Les domaines suivant expire dans 1 semaine</h1>
-
 <% @domains.each do |d| %>
-    <h2><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></h2>
-    <%= link_to "En savoir plus sur le domaine",domain_path(d), :target => "_blank" %>
+  <h2><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></h2>
+  <%= link_to "En savoir plus sur le domaine",domain_path(d), :target => "_blank" %>
 <% end %>
