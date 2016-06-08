@@ -66,3 +66,7 @@ button:hover{
   margin-top: 0;
   list-style: none;
 }
+
+#list{
+  display: none;
+}

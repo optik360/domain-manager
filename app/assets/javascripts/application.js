@@ -50,6 +50,10 @@ $(document).ready(function(){
       "orderable": false,
     }]
   });
+  
+  $("#button-toggle-list").click(function() {
+    $("#list").toggle()
+  });
     
   $('a.column').on( 'click', function (e) {
     e.preventDefault();
@@ -68,4 +72,3 @@ $(document).ready(function(){
     }
   });
 });
-
