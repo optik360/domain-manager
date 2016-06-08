@@ -54,4 +54,4 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'jquery-turbolinks'
 gem 'rufus-scheduler'
 gem 'godaddy-api'
-
+gem 'dotenv-rails', :groups => [:development, :test]

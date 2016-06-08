@@ -47,8 +47,8 @@ config.action_mailer.delivery_method = :smtp
 
 # these options are only needed if you choose smtp delivery
 config.action_mailer.smtp_settings = {
-  :user_name => 'Optik',
-  :password => '}|{[2/pL*r|v?tMO0nv:m}{9s',
+  :user_name => ENV['SENDGRID_USERNAME'],
+  :password => ENV['SENDGRID_PASSWORD'],
   :domain => 'gestionServer.com',
   :address => 'smtp.sendgrid.net',
   :port => 2525,

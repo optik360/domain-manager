@@ -1,9 +1,9 @@
 class DomainMailer < ApplicationMailer
-  default from: "gestion.server@optik.com"
+  default from: ENV['MAIL_FROM_ADDRESS']
   layout "mailer"
  
   def expire_soon(domains)
     @domains = domains
-    mail(to:"patrickk.vvigneault@gmail.com",subject:"domaine expire bientot")
+    mail(to: ENV['SUPERVISOR_EMAIL_ADDRESS'],subject: "Domaine expire bientot")
   end
 end
