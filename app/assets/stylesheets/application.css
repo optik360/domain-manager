@@ -1,0 +1,61 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require dataTables/jquery.dataTables
+ *= require_self
+ */
+ .Bandeaux{
+     background-color: #bdf00f;
+ }
+ .domain{
+     background-color: white
+     border: 1px solid black;
+ }
+ .Carte{
+     background-color: #f2f2f2;
+     box-shadow: 10px 12px 11px -4px rgba(0,0,0,0.12);
+ }
+ a{
+  color: #59c0e3
+ }
+ button:hover{
+  background-color: #bdf00f;
+  color: white;
+ }
+.etat{
+  border: 2px black solid;
+  border-radius: 200px;
+  margin-left: 30px;
+  height: 25px;
+  width: 25px;
+}
+.up{
+ background-color: #7cc837;
+}
+
+.down{
+ background-color: #c83737;
+}
+.update{
+ background-color: #f0e84d;
+} 
+
+.listeColumn{
+ border: 2px solid black;
+ width: 15%;
+ height:200px;
+ display: inline-block;
+ overflow: hidden;
+ margin-top: 0;
+ list-style: none;
+}

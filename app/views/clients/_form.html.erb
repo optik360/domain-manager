@@ -1,0 +1,6 @@
+<%= simple_form_for client do |f| %>
+  <%= hidden_field_tag 'redirect_path', params[:redirect]%>
+  <%= f.input :name %>
+  <%= f.input :contact_info, as: :text%>
+  <%= f.submit "Envoyer" %>
+<% end %>
