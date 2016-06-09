@@ -60,7 +60,7 @@ button:hover{
 .liste-column{
   border: 2px solid black;
   width: 15%;
-  height:200px;
+  height:250px;
   display: inline-block;
   overflow: hidden;
   margin-top: 0;
@@ -71,9 +71,9 @@ button:hover{
   display: none;
 }
 
-.login-info{
+.loginInfo{
   float: right;
-  padding:10px;
+  padding:30px;
   display: inline-block;
   text-align: right;
 }
