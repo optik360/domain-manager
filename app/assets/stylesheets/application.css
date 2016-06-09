@@ -19,7 +19,7 @@
 }
 
 .domain{
-  background-color: white
+  background-color: white;
   border: 1px solid black;
 }
 
@@ -29,7 +29,7 @@
 }
 
 a{
-  color: #59c0e3
+  color: #59c0e3;
 }
 
 button:hover{
@@ -69,4 +69,11 @@ button:hover{
 
 #list{
   display: none;
+}
+
+.login-info{
+  float: right;
+  padding:10px;
+  display: inline-block;
+  text-align: right;
 }

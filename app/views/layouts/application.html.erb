@@ -7,12 +7,20 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="header bandeaux">
-    <div class="container">
-      <h1><%= link_to 'Gestion Serveur', domains_path %></h1>
+    <div class="header bandeaux row">
+      <div class="container col-sm-9">
+        <h1><%= link_to 'Gestion Serveur', domains_path %></h1>
+      </div>
+      <div class="login-info col-sm-3">
+        <% if user_signed_in? %>
+          <div>Connecter en tant que... <%= current_user.email %></div>
+          <h3 class=""><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></h3>     
+        <% else %>
+          <h1 class="log-link"><%= link_to('Login', new_user_session_path)  %></h1>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <%= bootstrap_flash %>
-  <%= yield %>
+    <%= bootstrap_flash %>
+    <%= yield %>
   </body>
 </html>

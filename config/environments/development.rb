@@ -45,6 +45,8 @@ Rails.application.configure do
 # set delivery method to :smtp, :sendmail or :test
 config.action_mailer.delivery_method = :smtp
 
+config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 # these options are only needed if you choose smtp delivery
 config.action_mailer.smtp_settings = {
   :user_name => ENV['SENDGRID_USERNAME'],

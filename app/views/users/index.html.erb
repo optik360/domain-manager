@@ -1,0 +1,6 @@
+<div>
+  <% users.reject {|user| user.email == current_user.email}.each do |u| %>
+    <p><%= u.email %></p>
+    <%= link_to "Supprimer",user_path(u),method: :delete,:data => {:confirm => "Voulez vous vraiment supprimer l'usager #{u.email}"}%> 
+  <% end %>
+</div>
