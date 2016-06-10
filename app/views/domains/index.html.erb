@@ -1,19 +1,20 @@
-<h2 class="btn btn-lg"><%= link_to "ajouter un domaine", new_domain_path %></h2>
-<h2 class="btn btn-lg"><%= link_to "Liste des clients", clients_path %></h2>
-
-<button id="button-toggle-list" class="btn btn-lg">Choisir Colonne</button>
+<div>
+  <%= link_to t('add_domain'), new_domain_path, class: 'btn btn-primary btn-lg' %>
+  <%= link_to t('clients_list'), clients_path, class: 'btn btn-primary btn-lg'%>
+  <button id="button-toggle-list" class="btn btn-lg"><%=t('choose_columns')%></button>
+</div>
 
 <div id="list">
   <ul class="liste-column" id="visible">
     <li><h4>Visible</h4></li>
-    <li><a class="column" data-column ="0">nom</a></li>
-    <li><a class="column" data-column ="1">Client</a></li>
-    <li><a class="column" data-column ="2">Serveur</a></li>
-    <li><a class="column" data-column ="3">Nom Serveur</a></li>
-    <li><a class="column" data-column ="4">Dernière Facture</a></li>
-    <li><a class="column" data-column ="5">Temps d'ici l'expiration</a></li>
-    <li><a class="column" data-column ="6">État indiquer</a></li>
-    <li><a class="column" data-column ="7">État requête</a></li>
+    <li><a class="column" data-column ="0"><%=t('name')%></a></li>
+    <li><a class="column" data-column ="1"><%=t('client')%></a></li>
+    <li><a class="column" data-column ="2"><%=t('server')%></a></li>
+    <li><a class="column" data-column ="3"><%=t('server-name')%></a></li>
+    <li><a class="column" data-column ="4"><%=t('last_invoice')%></a></li>
+    <li><a class="column" data-column ="5"><%=t('time_until_expiration')%></a></li>
+    <li><a class="column" data-column ="6"><%=t('set_state')%></a></li>
+    <li><a class="column" data-column ="7"><%=t('http_state')%></a></li>
   </ul>
   <ul class="liste-column" id="hidden">
     <li><h4>Caché</h4></li>
@@ -23,28 +24,28 @@
 <table id="table" class="display" cellspacing="0" width="100%">
   <thead>
     <tr>
-      <th>Nom</th>
-      <th>Client</th>
-      <th>serveur</th>
-      <th>Nom serveur</th>
-      <th>Dernière Facture</th>
-      <th>temps d'ici l'expiration</th>
-      <th>état indiquer</th>
-      <th class="no-sort">état requete</th>
-      <th class="no-sort">info</th>
+      <th><%=t('name')%></th>
+      <th><%=t('client')%></th>
+      <th><%=t('server')%></th>
+      <th><%=t('server-name')%></th>
+      <th><%=t('last_invoice')%></th>
+      <th><%=t('time_until_expiration')%></th>
+      <th><%=t('set_state')%></th>
+      <th class="no-sort"><%=t('http_state')%></th>
+      <th class="no-sort"><%=t('info')%></th>
     </tr>
   </thead>
   <tfoot>
     <tr>
-      <th>Nom</th>
-      <th>Client</th>
-      <th>serveur</th>
-      <th>Nom serveur</th>
-      <th>Dernière Facture</th>
-      <th>temps d'ici l'expiration</th>
-      <th>état indiquer</th>
-      <th>état requete</th>
-      <th>info</th>
+      <th><%=t('name')%></th>
+      <th><%=t('client')%></th>
+      <th><%=t('server')%></th>
+      <th><%=t('server-name')%></th>
+      <th><%=t('last_invoice')%></th>
+      <th><%=t('time_until_expiration')%></th>
+      <th><%=t('set_state')%></th>
+      <th><%=t('http_state')%></th>
+      <th><%=t('info')%></th>
     </tr>
   </tfoot>
   <tbody>
@@ -58,7 +59,7 @@
           <td><%= Time.diff(Time.now,Time.parse(d.due_date.to_s),'%y, %M, %w, %d')[:diff] %></td>
           <td><%=  d.last_known_state_1%></td>
           <td><p class="etat <%=httpStatus(d) %>"></p></td>
-          <td> <%= link_to "plus de détails", domain_path(d.id)%></td>
+          <td> <%= link_to t('more_detail'), domain_path(d.id)%></td>
         </tr>
       <% end %>
   </tbody>

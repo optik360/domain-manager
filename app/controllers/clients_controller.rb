@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   responders :flash
 
   expose :clients
-  expose :client, attributes: :domain_params
+  expose :client, attributes: :client_params
 
   respond_to :html
 
@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
   def destroy
     if client.domains.count == 0
       client.destroy
-      respond_with client, location: domains_path
+      respond_with client, location: client_params
     else
       flash[:error] = "Vous pouvez pas supprimer un client ayant toujours un ou plusieurs domaine(s)"
       redirect_to :back
@@ -25,13 +25,13 @@ class ClientsController < ApplicationController
   end
 
   def update
-    client.update_attributes(domain_params)
+    client.update_attributes(client_params)
     respond_with client, location: params[:redirect_path]
   end
 
   private
 
-  def domain_params
+  def client_params
     params.require(:client).permit!
   end
 end

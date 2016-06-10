@@ -1,4 +1,59 @@
 fr:
+  server_manager: Gestion Server
+  add_domain: ajouter un domaine
+  clients_list: Liste des clients
+  choose_columns: Choisir Colonne
+  visible: Visible
+  name: Nom
+  client: Client
+  server: serveur
+  server_name: Nom serveur
+  last_invoice: Dernière Facture
+  time_until_expiration: "temps d'ici l'expiration"
+  set_state: État indiquer
+  http_state: État requête
+  hidden: Caché
+  info: info
+  more_detail: plus de détails
+  logout: Se déconnecter
+  login: Se connecter
+  domains: Liste des domaines
+  users: Usager
+  welcome: Bonjour
+  send: Envoyer
+  add_clients: Ajouter un clients
+  created_date: date de création
+  due_date: Date d'expiration
+  comment: commentaire
+  edit: Modifier
+  delete: Supprimer
+  contact_info: Information de contact
+  client_delete_confirmation: Voulez vous vraiment supprimer le client
+  domain_delete_confirmation: Voulez vous vraiment supprimer le domaine
+  connect_as: Connecté en tant que 
+
+  menu:
+    languages:
+      lang: "Language"
+      fr: "Français"
+      en: "Anglais"
+
+  simple_form:
+    labels:
+      client:
+        name: Nom
+        contact_info: 'Information de contact'
+      domain:
+        name: Nom
+        server: Serveur
+        server_name: Nom du serveur
+        host: Hôte
+        created_date: date de création
+        due_date: Date d'expiration
+        last_invoice_date: Date de la dernière facture
+        last_known_state_1: Dernier état connue
+        comment: Commentaire
+
   day: 'jour'
   days: 'jours'
   month: 'mois'
@@ -226,7 +281,7 @@ fr:
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
     pm: pm
-    
+
   devise:
     confirmations:
       confirmed: "Votre compte a été validé."
@@ -286,3 +341,23 @@ fr:
       not_saved:
         one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
         other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+
+  data_table:
+    sProcessing: "Traitement en cours..."
+    sSearch: "Rechercher&nbsp;:"
+    sLengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments"
+    sInfo: "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments"
+    sInfoEmpty: "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment"
+    sInfoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)"
+    sInfoPostFix: ""
+    sLoadingRecords: "Chargement en cours..."
+    sZeroRecords: "Aucun &eacute;l&eacute;ment &agrave; afficher"
+    sEmptyTable: "Aucune donn&eacute;e disponible dans le tableau"
+    oPaginate: 
+      sFirst: "Premier"
+      sPrevious: "Pr&eacute;c&eacute;dent"
+      sNext: "Suivant"
+      sLast: "Dernier"
+    oAria: 
+      sSortAscending: ": activer pour trier la colonne par ordre croissant"
+      sSortDescending: ": activer pour trier la colonne par ordre d&eacute;croissant"

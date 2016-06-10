@@ -1,4 +1,59 @@
 en:
+  add_domain: Add a domain
+  clients_list: Client list
+  choose_columns: Choose columns
+  visible: Visible
+  name: Name
+  client: Client
+  server: Server
+  name_server: Server name
+  last_invoice: Last invoice
+  time_until_expiration: Time until expiration
+  set_state: Setted state
+  http_state: HTTP State
+  hidden: Hidden
+  info: Info
+  more_detail: More details
+  logout: Logout
+  login: Login
+  domains: Domains List
+  users: Users
+  welcome: Welcome
+  send: Send
+  add_clients: Add a client
+  created_date: Created date
+  due_date: Expiration date
+  comment: comment
+  edit: Edit
+  delete: Delete
+  contact_info: Contact info
+  client_delete_confirmation: Do you really want to delete
+  domain_delete_confirmation: Do you really want to delete the domain
+  connect_as: Connected as 
+
+  menu:
+    languages:
+      lang: "Language"
+      fr: "French"
+      en: "English"
+
+  simple_form:
+    labels:
+      client:
+        name: Name
+        contact_info: Contact information
+      domain:
+        name: Name
+        server: Server
+        server_name: Serveur name
+        host: Host
+        created_date: Created date
+        due_date: Expiration date
+        last_invoice_date: Last invoice date
+        last_known_state_1: Last known state
+        comment: Comment
+
+
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
@@ -266,3 +321,23 @@ en:
       long: "%B %d, %Y %I:%M %p"
       short: "%d %b %I:%M %p"
     pm: pm
+    
+  data_table:
+    sProcessing: "Processing..."
+    sSearch: "Search:"
+    sLengthMenu: "Show _MENU_ entries"
+    sInfo: "Showing _START_ to _END_ of _TOTAL_ entries"
+    sInfoEmpty: "Showing 0 to 0 of 0 entries"
+    sInfoFiltered: "(filtered from _MAX_ total entries)"
+    sInfoPostFix: ""
+    sLoadingRecords: "Loading..."
+    sZeroRecords: "No matching records found"
+    sEmptyTable: "No data available in table"
+    oPaginate: 
+      sFirst: "First"
+      sPrevious: "Previous"
+      sNext: "Next"
+      sLast: "Last"
+    oAria: 
+      sSortAscending: ": activate to sort column ascending"
+      sSortDescending: ": activate to sort column descending"

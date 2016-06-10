@@ -79,6 +79,8 @@ GEM
       activesupport (>= 4.1.0)
     godaddy-api (0.1.0)
     i18n (0.7.0)
+    i18n-js (3.0.0.rc12)
+      i18n (~> 0.6, >= 0.6.6)
     jbuilder (2.5.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -235,6 +237,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   godaddy-api
+  i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.0)
   jquery-datatables-rails (~> 3.3.0)
   jquery-rails

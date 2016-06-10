@@ -60,3 +60,4 @@ gem 'rufus-scheduler'
 gem 'godaddy-api'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'devise'
+gem "i18n-js", ">= 3.0.0.rc11"

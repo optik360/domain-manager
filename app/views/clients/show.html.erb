@@ -1,13 +1,14 @@
 <div class="container row">
   <div class="card col-xs-12 carte">
     <h2><%=client.name%></h2>
-    <h3>Information de contact: <%=client.contact_info %></h3>
-    <%= link_to "Supprimer",client_path(client),method: :delete,:data => {:confirm => "Voulez vous vraiment supprimer le client  #{client.name}"}%>
-    <h2>Domaine</h2>
+    <h3><%= t('contact_info')%> <%=client.contact_info %></h3>
+    <%= link_to t('delete'),client_path(client),method: :delete,:data => {:confirm => t("client_delete_confirmation")+client.name},class: 'btn btn-primary btn-lg'%>
+    <%= link_to t('edit'),edit_client_path(client),class: 'btn btn-primary btn-lg'%>
+    <h2><%= t('domain') %></h2>
     <% client.domains.each do |d| %>
       <div class="domain">
         <p><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></p>
-        <p><%= link_to "En savoir plus", domain_path(d)%></p>
+        <p><%= link_to t('more_detail'), domain_path(d)%></p>
       </div>
     <%end%>
   </div>

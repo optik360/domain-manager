@@ -1,0 +1,66 @@
+%h2.btn.btn-lg= link_to t('.ajouter_un_domaine'), new_domain_path
+%h2.btn.btn-lg= link_to t('.liste_des_clients'), clients_path
+%button#button-toggle-list.btn.btn-lg= t('.choisir_colonne')
+#list
+  %ul#visible.liste-column
+    %li
+      %h4= t('.visible')
+    %li
+      %a.column{"data-column" => "0"}= t('.nom')
+    %li
+      %a.column{"data-column" => "1"}= t('.client')
+    %li
+      %a.column{"data-column" => "2"}= t('.serveur')
+    %li
+      %a.column{"data-column" => "3"}= t('.nom_serveur')
+    %li
+      %a.column{"data-column" => "4"}= t('.dernière_facture')
+    %li
+      %a.column{"data-column" => "5"}= t('.temps_dici_lexpiration')
+    %li
+      %a.column{"data-column" => "6"}= t('.État_indiquer')
+    %li
+      %a.column{"data-column" => "7"}= t('.État_requête')
+  %ul#hidden.liste-column
+    %li
+      %h4= t('.caché')
+%table#table.display{:cellspacing => "0", :width => "100%"}
+  %thead
+    %tr
+      %th= t('.nom')
+      %th= t('.client')
+      %th= t('.serveur')
+      %th= t('.nom_serveur')
+      %th= t('.dernière_facture')
+      %th= t('.temps_dici_lexpiration')
+      %th= t('.état_indiquer')
+      %th.no-sort= t('.état_requete')
+      %th.no-sort= t('.info')
+  %tfoot
+    %tr
+      %th= t('.nom')
+      %th= t('.client')
+      %th= t('.serveur')
+      %th= t('.nom_serveur')
+      %th= t('.dernière_facture')
+      %th= t('.temps_dici_lexpiration')
+      %th= t('.état_indiquer')
+      %th= t('.état_requete')
+      %th= t('.info')
+  %tbody
+    - domains.each do |d|
+      %tr
+        %td= link_to d.name,"http://#{d.name}", :target => "_blank"
+        %td
+          = link_to d.client.name, client_path(d.client)
+        %td
+          = d.server
+        %td
+          = d.server_name
+        %td= d.last_invoice_date
+        %td= Time.diff(Time.now,Time.parse(d.due_date.to_s),'%y, %M, %w, %d')[:diff]
+        %td= d.last_known_state_1
+        %td
+          %p{:class => "etat #{httpStatus(d)}"}
+        %td
+          = link_to t('.plus_de_détails'), domain_path(d.id)

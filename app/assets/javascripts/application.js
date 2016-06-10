@@ -10,6 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// This is optional (in case you have `I18n is not defined` error)
+// If you want to put this line, you must put it BEFORE `i18n/translations`
+//= require i18n
+// Some people even need to add the extension to make it work, see https://github.com/fnando/i18n-js/issues/283
+//= require i18n.js
+//
+// This is a must
+//= require i18n/translations
+//
 //cdn.datatables.net/plug-ins/1.10.11/i18n/French.json
 //= require jquery
 //= require jquery_ujs
@@ -20,31 +29,11 @@
 //= require jquery.turbolinks
 
 $(document).ready(function(){
+  console.log(I18n.t('domain_delete_confirmation'))
   var table=$('#table').DataTable( {
     "order": [],
     "scrollx": true,
-    "language":{
-      "sProcessing":     "Traitement en cours...",
-          "sSearch":         "Rechercher&nbsp;:",
-          "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
-          "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-          "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
-          "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-          "sInfoPostFix":    "",
-          "sLoadingRecords": "Chargement en cours...",
-          "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-          "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
-          "oPaginate": {
-            "sFirst":      "Premier",
-            "sPrevious":   "Pr&eacute;c&eacute;dent",
-            "sNext":       "Suivant",
-            "sLast":       "Dernier"
-          },
-          "oAria": {
-            "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
-            "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
-                }
-    },
+    "language": I18n.t('data_table'),
     "columnDefs": [ {
       "targets"  : 'no-sort',
       "orderable": false,
@@ -53,6 +42,13 @@ $(document).ready(function(){
   
   $("#button-toggle-list").click(function() {
     $("#list").toggle()
+  });
+  
+  $(".fr").click(function() {
+    I18n.locale = "fr";
+  });
+  $(".en").click(function() {
+    I18n.locale = "en";
   });
     
   $('a.column').on( 'click', function (e) {

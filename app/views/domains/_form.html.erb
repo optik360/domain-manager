@@ -1,16 +1,16 @@
-<h3><%= link_to "Ajouter un client", new_client_path(redirect: new_domain_path())%></h3>
+<h3><%= link_to t("add_clients"), new_client_path(redirect: new_domain_path())%></h3>
 <%= simple_form_for domain do |f| %>
   <%= f.association :client, include_blank: false %>
   <%= f.input :name, placeholder: "www.exemple.com" %>
   <%= f.input :cms %>
   <%= f.input :server %>
-  <%= f.input :server_name, label: "Nom du serveur"%>
-  <%= f.input :host, label: "Hôte"%>
-  <%= f.input :created_date, label: "date de création" %>
-  <%= f.input :due_date, label: "Date d'expiration du nom de domaine"%>
-  <%= f.input :last_invoice_date, label: "Date de la dernière facture" %>
+  <%= f.input :server_name%>
+  <%= f.input :host%>
+  <%= f.input :created_date%>
+  <%= f.input :due_date%>
+  <%= f.input :last_invoice_date%>
   <%= f.input :last_known_state_1,collection: ['ok','maintenance','arrêté'], as: :radio_buttons  %>
   <%= f.input :mail %>
   <%= f.input :comment %>
-  <%= f.submit "Envoyer" %>
+  <%= f.submit t("send") %>
 <% end %>

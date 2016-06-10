@@ -3,22 +3,22 @@
 <% if user_signed_in? %>
   <div class="jumbotron">
     <div class="container">
-      <h1>Bonjour <%= current_user.username %></h1>
+      <h1> <%= t('welcome') + " " + current_user.username %></h1>
       <p>
-        <%= link_to 'domains', domains_path,class: 'btn btn-primary btn-lg'  %>
-        <%= link_to 'clients', clients_path, :method => :delete ,class: 'btn btn-primary btn-lg'  %>
-        <%= link_to 'usager', users_path, class: 'btn btn-primary btn-lg'  %>
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete ,class: 'btn btn-danger btn-lg'  %>
+        <%= link_to t('domains'), domains_path,class: 'btn btn-primary btn-lg'%>
+        <%= link_to t('clients'), clients_path,class: 'btn btn-primary btn-lg'%>
+        <%= link_to t('users'), users_path, class: 'btn btn-primary btn-lg'%>
+        <%= link_to t('logout'), destroy_user_session_path, :method => :delete ,class: 'btn btn-danger btn-lg'  %>
       </p>
     </div>
   </div>
 <% else %>
   <div class="jumbotron">
     <div class="container">
-      <h1>Bonjour!</h1>
+      <h1><%= t('welcome') %></h1>
       <p>Connecter vous pour commencer.</p>
       <p>
-        <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary btn-lg' %>
+        <%= link_to t('login'), new_user_session_path, class: 'btn btn-primary btn-lg' %>
       </p>
     </div>
   </div>
