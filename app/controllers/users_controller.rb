@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token  
   
   expose :users
   expose :user, attributes: :user_params
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   
   def create
     User.create!(user_params)
-    respond_with user, location: users-path
+    respond_with user, location: users_path
   end
   
   def destroy
