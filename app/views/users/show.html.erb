@@ -1,0 +1,7 @@
+<div class="container row">
+  <div class="card col-xs-12 carte">
+    <h2><%=user.username%></h2>
+    <h3>email: <%=user.email %></h3>
+    <%= link_to t('edit'),edit_user_path(user),class: 'btn btn-primary btn-lg'%>
+  </div>
+</div>

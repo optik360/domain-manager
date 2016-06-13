@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :domains
+  resources :domains do 
+    collection {post :import}
+  end
   resources :clients
   resources :users
   root to: "pages#index"

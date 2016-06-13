@@ -59,8 +59,8 @@ button:hover{
 
 .liste-column{
   border: 2px solid black;
-  width: 15%;
-  height:250px;
+  width: 10%;
+  height:300px;
   display: inline-block;
   overflow: hidden;
   margin-top: 0;
@@ -76,4 +76,16 @@ button:hover{
   padding:30px;
   display: inline-block;
   text-align: right;
+}
+
+table.DTCR_clonedTable.dataTable{
+  position:absolute !important;
+  background-color:rgba(255,255,255,0.7);
+  z-index:202;
+}
+div.DTCR_pointer{
+  width:1px;
+  background-color:#0259C4;
+  z-index:201;
+  
 }

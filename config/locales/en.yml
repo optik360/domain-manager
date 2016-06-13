@@ -30,6 +30,11 @@ en:
   client_delete_confirmation: Do you really want to delete
   domain_delete_confirmation: Do you really want to delete the domain
   connect_as: Connected as 
+  host: Host
+  imported: The domains in the file have been imported successfully
+  import: Import
+  import_info: Only support csv
+  download: Download
 
   menu:
     languages:

@@ -7,7 +7,11 @@ class DomainsController < ApplicationController
   expose :domains
   expose :domain, attributes: :domain_params
 
-  respond_to :html
+  respond_to :html, :csv, :xls
+
+  def index
+    respond_with domains
+  end
 
   def create
     domain.save
@@ -22,6 +26,11 @@ class DomainsController < ApplicationController
   def update
     domain.update_attributes(domain_params)
     respond_with domain, location: domains_path
+  end
+
+  def import
+    Domain.import(params[:file])
+    redirect_to domains_path, notice: t('imported')
   end
 
   private

@@ -14,10 +14,13 @@
     <li><a class="column" data-column ="4"><%=t('last_invoice')%></a></li>
     <li><a class="column" data-column ="5"><%=t('time_until_expiration')%></a></li>
     <li><a class="column" data-column ="6"><%=t('set_state')%></a></li>
-    <li><a class="column" data-column ="7"><%=t('http_state')%></a></li>
+    <li><a class="column" data-column ="7">Mail</a></li>
   </ul>
   <ul class="liste-column" id="hidden">
     <li><h4>Caché</h4></li>
+    <li><a class="column" data-column ="9"><%=t('host')%></a></li>
+    <li><a class="column" data-column ="10"><%=t('time_since_last_invoice')%></a></li>
+    <li><a class="column" data-column ="11"><%=t('mail')%></a></li>
   </ul>
 </div>
 
@@ -33,6 +36,9 @@
       <th><%=t('set_state')%></th>
       <th class="no-sort"><%=t('http_state')%></th>
       <th class="no-sort"><%=t('info')%></th>
+      <th class="no"><%=t('host')%></th>
+      <th class="no"><%=t('time_since_last_invoice')%></th>
+      <th class="no">Mail</th>
     </tr>
   </thead>
   <tfoot>
@@ -46,6 +52,9 @@
       <th><%=t('set_state')%></th>
       <th><%=t('http_state')%></th>
       <th><%=t('info')%></th>
+      <th><%=t('host')%></th>
+      <th><%=t('time_since_last_invoice')%></th>
+      <th>Mail</th>
     </tr>
   </tfoot>
   <tbody>
@@ -60,7 +69,25 @@
           <td><%=  d.last_known_state_1%></td>
           <td><p class="etat <%=httpStatus(d) %>"></p></td>
           <td> <%= link_to t('more_detail'), domain_path(d.id)%></td>
+          <td><%=  d.host %></dt>
+          <td><%=  Time.diff(Time.parse(d.last_invoice_date.to_s),Time.now,'%y, %M, %w, %d')[:diff] %></dt>
+          <td><%=  d.mail %></dt>
         </tr>
       <% end %>
   </tbody>
 </table>
+<div>
+  <p class="navbar-right">
+    <h2><%= t("download")%></h2>
+    <%= link_to "CSV", domains_path(format: "csv"),class: 'btn btn-primary' %> |
+    <%= link_to "Excel", domains_path(format: "xls"),class: 'btn btn-primary' %>
+  </p>
+  <p class="navbar-right">
+    <h2><%= t("import")%></h2>
+    <p><%= t("import_info")%> </p>
+    <%= form_tag import_domains_path, multipart: true do %>
+      <%= file_field_tag :file, required: true%>
+      <%= submit_tag "Import" %>
+    <% end %>
+  </p>
+</div>

@@ -29,15 +29,14 @@
 //= require jquery.turbolinks
 
 $(document).ready(function(){
-  console.log(I18n.t('domain_delete_confirmation'))
   var table=$('#table').DataTable( {
     "order": [],
     "scrollx": true,
     "language": I18n.t('data_table'),
-    "columnDefs": [ {
-      "targets"  : 'no-sort',
-      "orderable": false,
-    }]
+    "columnDefs": [ 
+      {"targets"  : 'no-sort',"orderable": false},
+      {"targets"  : 'no',"visible": false}
+    ]
   });
   
   $("#button-toggle-list").click(function() {

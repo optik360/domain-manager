@@ -1,0 +1,6 @@
+<%= simple_form_for user do |f| %>
+  <%= f.input :username %>
+  <%= f.input :email, as: :email %>
+  <%= link_to 'Change Password', edit_user_registration_path %>
+  <%= f.submit "Envoyer" %>
+<% end %>

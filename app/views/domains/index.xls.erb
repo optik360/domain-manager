@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Cms</Data></Cell>
+        <Cell><Data ss:Type="String">DueDate</Data></Cell>
+        <Cell><Data ss:Type="String">DernierEtat</Data></Cell>
+        <Cell><Data ss:Type="String">Commentaire</Data></Cell>
+        <Cell><Data ss:Type="String">Nomserveur</Data></Cell>
+        <Cell><Data ss:Type="String">Datedecreationdudomaine</Data></Cell>
+        <Cell><Data ss:Type="String">Datedernierefacture</Data></Cell>
+        <Cell><Data ss:Type="String">Mail</Data></Cell>
+        <Cell><Data ss:Type="String">Host</Data></Cell>
+        <Cell><Data ss:Type="String">Client</Data></Cell>
+      </Row>
+    <% domains.each do |d| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= d.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.cms %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.due_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.last_known_state_1 %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.comment %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.server_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.created_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.last_invoice_date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.mail %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.host %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= d.client.name %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -61,3 +61,5 @@ gem 'godaddy-api'
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'devise'
 gem "i18n-js", ">= 3.0.0.rc11"
+gem 'as_csv'
+gem 'roo'

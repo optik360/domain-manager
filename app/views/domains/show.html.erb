@@ -4,6 +4,7 @@
     <h2><%= t('client')%>: <%= link_to domain.client.name, client_path(domain.client_id) %></h2> 
     <h3><%= t('server_name')%>: <%= domain.server_name %></h3>
     <h3><%= t('server')%>: <%= domain.server %></h3>
+    <h4><%= t('host')%>: <%= domain.host %></h4>
     <p>CMS: <%= domain.cms%></p>
     <p><%= t('set_state')%>: <%= domain.last_known_state_1%></p>
     <div><%= t('http_state')%>: <p class="etat <%=httpStatus(domain) %>"></p> </div>
