@@ -1,19 +1,36 @@
-<div class="container row">
-  <div class="card col-xs-12 carte">
-    <h1><%= link_to domain.name,"http://#{domain.name}", :target => "_blank" %></h1>
-    <h2><%= t('client')%>: <%= link_to domain.client.name, client_path(domain.client_id) %></h2> 
-    <h3><%= t('server_name')%>: <%= domain.server_name %></h3>
-    <h3><%= t('server')%>: <%= domain.server %></h3>
-    <h4><%= t('host')%>: <%= domain.host %></h4>
-    <p>CMS: <%= domain.cms%></p>
-    <p><%= t('set_state')%>: <%= domain.last_known_state_1%></p>
-    <div><%= t('http_state')%>: <p class="etat <%=httpStatus(domain) %>"></p> </div>
-    <p><%= t('created_date')%>: <%=  domain.created_date%></p>
-    <p><%= t('due_date')%>: <%=  domain.due_date%></p>
-    <p><%= t('time_until_expiration')%>: <%= Time.diff(Time.now,Time.parse(domain.due_date.to_s),'%y, %M, %w, %d')[:diff] %></p>
-    <p>Mail: <%= domain.mail%></p>
-    <p> <%= t('comment')%>: <%= domain.comment%></p>
-    <h3> <%= link_to t('edit'), edit_domain_path(domain.id)%></h3>
-    <h3> <%= link_to t('delete'),domain_path(domain.id),method: :delete,:data => {:confirm => t("domain_delete_confirmation")+domain.name}%></h3>
+<div class="container">
+  <div class="row card">
+
+    <div class="col-xs-7">
+      <h1><%= link_to domain.name,"http://#{domain.name}", :target => "_blank" %></h1>
+      <h2><%= t('client') %>:
+        <% if domain.client_id? && !domain.client.nil? %>
+          <%= link_to domain.client.name, client_path(domain.client) %>
+        <% else %>
+          <%= t('undefined')%>
+        <% end %>
+      </h2>
+      <h3><%= t('server_name')%>: <%= domain.server_name %></h3>
+      <h3><%= t('server')%>: <%= domain.server %></h3>
+      <h4><%= t('host')%>: <%= domain.host %></h4>
+      <p>CMS: <%= domain.cms%></p>
+      <p><%= t('set_state')%>: <%= domain.last_known_state_1%></p>
+      <div><%= t('http_state')%>: <span class="etat <%= httpStatus(domain) %>"></span> </div>
+      <p><%= t('created_date')%>: <%=  domain.created_date%></p>
+      <p><%= t('due_date')%>: <%=  domain.due_date%></p>
+      <p><%= t('time_until_expiration')%>: <%= Time.diff(Time.now,Time.parse(domain.due_date.to_s),'%y, %M, %w, %d')[:diff] %></p>
+      <p>Mail: <%= domain.mail%></p>
+      <p> <%= t('comment')%>: <%= domain.comment%></p>
+      <h3> <%= link_to t('edit'), edit_domain_path(domain.id)%></h3>
+      <h3> <%= link_to t('delete'),domain_path(domain.id),method: :delete,:data => {:confirm => t("domain_delete_confirmation")+domain.name}%></h3>
+    </div>
+
+    <% if httpStatus(domain) == 'up' %>
+      <div class="col-xs-5 description well">
+        <%= image_tag(LinkThumbnailer.generate("http://#{domain.name}").images.first.src.to_s, class: "web-image") %>
+        <p class="well"><%= LinkThumbnailer.generate("http://#{domain.name}").description %></p>
+      </div>
+    <% end %>
+
   </div>
 </div>

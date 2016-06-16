@@ -1,7 +1,12 @@
-<div>
+<div class="container">
   <% users.reject {|user| user.email == current_user.email}.each do |u| %>
-    <h3><%= u.email %>
-      <%= link_to "Supprimer",user_path(u),method: :delete,:data => {:confirm => "Voulez vous vraiment supprimer l'usager #{u.username}"}%>
-    </h3>
+    <div class="container">
+      <div class="card">
+        <h2><%= link_to u.username, user_path(u)%></h2>
+        <h3>email: <%=u.email %></h3>
+        <%= link_to t('delete'), user_path(u), method: :delete, class: 'btn btn-primary btn-lg', data: {confirm: "Voulez vous vraiment supprimer l'usager #{u.username}"} %>
+        <%= link_to t('edit'),edit_user_path(u),class: 'btn btn-primary btn-lg' %>
+      </div>
+    </div>
   <% end %>
 </div>

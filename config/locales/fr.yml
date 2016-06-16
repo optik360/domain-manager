@@ -35,7 +35,9 @@ fr:
   imported: Les domaines on été importé avec succès
   import: Importer
   import_info: Supporte seulement le csv
-  download: Télécharger
+  download: Exporter
+  time_since_last_invoice: Temps d'ici la dernière facture
+  undefined: Pas definie
 
   menu:
     languages:

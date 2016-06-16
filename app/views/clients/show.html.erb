@@ -1,14 +1,16 @@
-<div class="container row">
-  <div class="card col-xs-12 carte">
-    <h2><%=client.name%></h2>
-    <h3><%= t('contact_info')%> <%=client.contact_info %></h3>
-    <%= link_to t('delete'),client_path(client),method: :delete,:data => {:confirm => t("client_delete_confirmation")+client.name},class: 'btn btn-primary btn-lg'%>
+<div class="container">
+  <div class="col-xs-12 card">
+    <h1><%=client.name%></h1>
+    <h3><u><%= t('contact_info')%></u></h3>
+    <h4><%=simple_format(client.contact_info) %></h4>
+    <%= link_to t('delete'),client_path(client),method: :delete,data: {confirm: t("client_delete_confirmation")+" "+client.name},class: 'btn btn-primary btn-lg'%>
     <%= link_to t('edit'),edit_client_path(client),class: 'btn btn-primary btn-lg'%>
     <h2><%= t('domain') %></h2>
     <% client.domains.each do |d| %>
-      <div class="domain">
-        <p><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></p>
-        <p><%= link_to t('more_detail'), domain_path(d)%></p>
+      <div class="well">
+        <div>
+          <%= link_to d.name,"http://#{d.name}", :target => "_blank" %> <%= link_to t('more_detail'), domain_path(d), class: "pull-right"%>
+        </div>
       </div>
     <%end%>
   </div>

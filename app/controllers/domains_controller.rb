@@ -29,7 +29,7 @@ class DomainsController < ApplicationController
   end
 
   def import
-    Domain.import(params[:file])
+    CSVImporter.new(params[:file].path).call
     redirect_to domains_path, notice: t('imported')
   end
 

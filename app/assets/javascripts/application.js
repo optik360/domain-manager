@@ -25,31 +25,28 @@
 //= require dataTables/jquery.dataTables
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree 
+//= require_tree
 //= require jquery.turbolinks
+//= require admin-lte
 
 $(document).ready(function(){
   var table=$('#table').DataTable( {
     "order": [],
     "scrollx": true,
     "language": I18n.t('data_table'),
-    "columnDefs": [ 
+    "columnDefs": [
       {"targets"  : 'no-sort',"orderable": false},
       {"targets"  : 'no',"visible": false}
     ]
   });
-  
-  $("#button-toggle-list").click(function() {
-    $("#list").toggle()
-  });
-  
+
   $(".fr").click(function() {
     I18n.locale = "fr";
   });
   $(".en").click(function() {
     I18n.locale = "en";
   });
-    
+
   $('a.column').on( 'click', function (e) {
     e.preventDefault();
 

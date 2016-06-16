@@ -1,93 +1,112 @@
-<div>
-  <%= link_to t('add_domain'), new_domain_path, class: 'btn btn-primary btn-lg' %>
-  <%= link_to t('clients_list'), clients_path, class: 'btn btn-primary btn-lg'%>
-  <button id="button-toggle-list" class="btn btn-lg"><%=t('choose_columns')%></button>
+<div class="btn-group well ">
+    <%= link_to t('add_domain'), new_domain_path, class: 'btn btn-primary btn-lg' %>
+    <button id="button-toggle-list" class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#list"><%=t('choose_columns')%> </button>
+    <div class="btn-group">
+      <button class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown"><%= t('download')%> <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><%= link_to "CSV", domains_path(format: "csv") %><li>
+        <li><%= link_to "Excel", domains_path(format: "xls") %></li>
+      <ul>
+    </div>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#import"><%= t('import') %></button>
 </div>
 
-<div id="list">
-  <ul class="liste-column" id="visible">
+<div id="list" class="collapse">
+  <ul class="liste-column well" id="visible">
     <li><h4>Visible</h4></li>
     <li><a class="column" data-column ="0"><%=t('name')%></a></li>
     <li><a class="column" data-column ="1"><%=t('client')%></a></li>
     <li><a class="column" data-column ="2"><%=t('server')%></a></li>
-    <li><a class="column" data-column ="3"><%=t('server-name')%></a></li>
+    <li><a class="column" data-column ="3"><%=t('server_name')%></a></li>
     <li><a class="column" data-column ="4"><%=t('last_invoice')%></a></li>
     <li><a class="column" data-column ="5"><%=t('time_until_expiration')%></a></li>
     <li><a class="column" data-column ="6"><%=t('set_state')%></a></li>
-    <li><a class="column" data-column ="7">Mail</a></li>
   </ul>
-  <ul class="liste-column" id="hidden">
+  <ul class="liste-column well" id="hidden">
     <li><h4>Caché</h4></li>
     <li><a class="column" data-column ="9"><%=t('host')%></a></li>
     <li><a class="column" data-column ="10"><%=t('time_since_last_invoice')%></a></li>
-    <li><a class="column" data-column ="11"><%=t('mail')%></a></li>
+    <li><a class="column" data-column ="11">Mail</a></li>
   </ul>
 </div>
 
-<table id="table" class="display" cellspacing="0" width="100%">
-  <thead>
-    <tr>
-      <th><%=t('name')%></th>
-      <th><%=t('client')%></th>
-      <th><%=t('server')%></th>
-      <th><%=t('server-name')%></th>
-      <th><%=t('last_invoice')%></th>
-      <th><%=t('time_until_expiration')%></th>
-      <th><%=t('set_state')%></th>
-      <th class="no-sort"><%=t('http_state')%></th>
-      <th class="no-sort"><%=t('info')%></th>
-      <th class="no"><%=t('host')%></th>
-      <th class="no"><%=t('time_since_last_invoice')%></th>
-      <th class="no">Mail</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th><%=t('name')%></th>
-      <th><%=t('client')%></th>
-      <th><%=t('server')%></th>
-      <th><%=t('server-name')%></th>
-      <th><%=t('last_invoice')%></th>
-      <th><%=t('time_until_expiration')%></th>
-      <th><%=t('set_state')%></th>
-      <th><%=t('http_state')%></th>
-      <th><%=t('info')%></th>
-      <th><%=t('host')%></th>
-      <th><%=t('time_since_last_invoice')%></th>
-      <th>Mail</th>
-    </tr>
-  </tfoot>
-  <tbody>
-      <% domains.each do |d| %>
-        <tr>
-          <td><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></td>
-          <td><%= link_to d.client.name, client_path(d.client) %></dt>
-          <td><%=  d.server %></dt>
-          <td><%=  d.server_name %></dt>
-          <td><%=  d.last_invoice_date%></td>
-          <td><%= Time.diff(Time.now,Time.parse(d.due_date.to_s),'%y, %M, %w, %d')[:diff] %></td>
-          <td><%=  d.last_known_state_1%></td>
-          <td><p class="etat <%=httpStatus(d) %>"></p></td>
-          <td> <%= link_to t('more_detail'), domain_path(d.id)%></td>
-          <td><%=  d.host %></dt>
-          <td><%=  Time.diff(Time.parse(d.last_invoice_date.to_s),Time.now,'%y, %M, %w, %d')[:diff] %></dt>
-          <td><%=  d.mail %></dt>
-        </tr>
+<div class="table-responsive">
+  <table id="table" class="display table table-hover dataTable" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th class="sorting"><%=t('name')%></th>
+        <th><%=t('client')%></th>
+        <th><%=t('server')%></th>
+        <th><%=t('server_name')%></th>
+        <th><%=t('last_invoice')%></th>
+        <th><%=t('time_until_expiration')%></th>
+        <th><%=t('set_state')%></th>
+        <th class="no-sort"><%=t('http_state')%></th>
+        <th class="no-sort"><%=t('info')%></th>
+        <th class="no"><%=t('host')%></th>
+        <th class="no"><%=t('time_since_last_invoice')%></th>
+        <th class="no">Mail</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th><%=t('name')%></th>
+        <th><%=t('client')%></th>
+        <th><%=t('server')%></th>
+        <th><%=t('server_name')%></th>
+        <th><%=t('last_invoice')%></th>
+        <th><%=t('time_until_expiration')%></th>
+        <th><%=t('set_state')%></th>
+        <th><%=t('http_state')%></th>
+        <th><%=t('info')%></th>
+        <th><%=t('host')%></th>
+        <th><%=t('time_since_last_invoice')%></th>
+        <th>Mail</th>
+      </tr>
+    </tfoot>
+    <tbody>
+        <% domains.each do |d| %>
+          <tr>
+            <td><%= link_to d.name,"http://#{d.name}", :target => "_blank" %></td>
+            <td>
+              <% if d.client_id? && !d.client.nil? %>
+                <%= link_to d.client.name, client_path(d.client) %>
+              <% else %>
+                <%= t('undefined')%>
+              <% end %>
+            </dt>
+            <td><%=  d.server %></dt>
+            <td><%=  d.server_name %></dt>
+            <td><%=  d.last_invoice_date%></td>
+            <td><%= Time.diff(Time.now,Time.parse(d.due_date.to_s),'%y, %M, %w, %d')[:diff] %></td>
+            <td><%=  d.last_known_state_1%></td>
+            <td><p class="etat <%=httpStatus(d) %>"></p></td>
+            <td> <%= link_to t('more_detail'), domain_path(d.id)%></td>
+            <td><%=  d.host %></dt>
+            <td><%=  Time.diff(Time.parse(d.last_invoice_date.to_s),Time.now,'%y, %M, %w, %d')[:diff] %></dt>
+            <td><%=  d.mail %></dt>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="import" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag import_domains_path, multipart: true do %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%= t('import')%></h4>
+        </div>
+        <div class="modal-body">
+          <p><%= t("import_info")%> </p>
+          <%= file_field_tag :file, required: true %>
+        </div>
+        <div class="modal-footer">
+          <%= submit_tag "Import", class:"btn btn-primary"%>
+        </div>
       <% end %>
-  </tbody>
-</table>
-<div>
-  <p class="navbar-right">
-    <h2><%= t("download")%></h2>
-    <%= link_to "CSV", domains_path(format: "csv"),class: 'btn btn-primary' %> |
-    <%= link_to "Excel", domains_path(format: "xls"),class: 'btn btn-primary' %>
-  </p>
-  <p class="navbar-right">
-    <h2><%= t("import")%></h2>
-    <p><%= t("import_info")%> </p>
-    <%= form_tag import_domains_path, multipart: true do %>
-      <%= file_field_tag :file, required: true%>
-      <%= submit_tag "Import" %>
-    <% end %>
-  </p>
+    </div>
+  </div>
 </div>

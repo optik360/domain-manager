@@ -34,7 +34,8 @@ en:
   imported: The domains in the file have been imported successfully
   import: Import
   import_info: Only support csv
-  download: Download
+  download: Export
+  undefined: Undefined
 
   menu:
     languages:

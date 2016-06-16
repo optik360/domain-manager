@@ -1,20 +1,23 @@
-<%= link_to "ajouter", new_client_path, class: "btn btn-lg btn-primary" %>
 <table id="table" class="display" cellspacing="0" width="100%">
   <thead>
     <tr>
       <th>Nom</th>
+      <th class="no-sort">Modifier</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
       <th>Nom</th>
+      <th>Modifier</th>
     </tr>
   </tfoot>
   <tbody>
     <% clients.each do |c| %>
       <tr>
-        <td><%= link_to c.name, client_path(c) %></td>
+        <td><h3><%= link_to c.name, client_path(c) %></h3></td>
+        <td><h3><%= link_to t('edit'),edit_client_path(c) %></h3></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to "ajouter", new_client_path, class: "btn btn-primary btn-lg" %>

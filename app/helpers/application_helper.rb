@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def httpStatus(domain)
     begin
       http = Net::HTTP.new(domain.name,80)

@@ -1,9 +1,7 @@
-<div class="container row">
+<div class="container ">
   <%= simple_form_for user do |f| %>
     <%= f.input :username %>
     <%= f.input :email, as: :email %>
-    <%= f.input :password, :autocomplete => "off", as: "password"%>
-    <%= f.input :password_confirmation, as: "password" %>
     <%= f.submit "Envoyer" %>
   <% end %>
 </div>

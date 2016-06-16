@@ -1,6 +1,6 @@
 <h3><%= link_to t("add_clients"), new_client_path(redirect: new_domain_path())%></h3>
 <%= simple_form_for domain do |f| %>
-  <%= f.association :client, include_blank: false %>
+  <%= f.association :client%>
   <%= f.input :name, placeholder: "www.exemple.com" %>
   <%= f.input :cms %>
   <%= f.input :server %>
